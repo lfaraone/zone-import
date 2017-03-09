@@ -13,7 +13,9 @@ Usage
 
   python zone-import.py [-k apikey] [--ote] first-zone.txt second-zone.txt […]
 
-Script will ask for your API key if not provided in arguments.
+The API key can also be specified via the environment variable ``GANDI_API_KEY``.
+
+Script will ask for your API key if not provided in arguments or environment.
 
 Each zone will be name from its file name.
 

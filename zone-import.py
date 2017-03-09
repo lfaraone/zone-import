@@ -16,6 +16,7 @@ multiple times will result in the same zone names being created
 from __future__ import unicode_literals, print_function
 
 import sys
+import os
 import os.path
 import argparse
 
@@ -46,7 +47,10 @@ def main():
 
     target = 'ote' if args.ote else 'production'
     if not args.key:
-        args.key = raw_input('Enter API Key (%s): ' % target)
+        if "GANDI_API_KEY" in os.environ:
+            args.key = os.environ["GANDI_API_KEY"]
+        else:
+            args.key = raw_input('Enter API Key (%s): ' % target)
 
     REMOTE = ServerProxy(RPC[target])
 
